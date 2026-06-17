@@ -44,7 +44,6 @@ jobs:
             -v $(pwd)/workspace:/home \
             -p 3000:3000 \
             test-image:latest
-          docker logs test-container
 
       - name: Wait for HEALTHCHECK to pass
         run: |
@@ -56,6 +55,7 @@ jobs:
               echo "Container is healthy!"
               exit 0
             fi
+            docker logs test-container
             sleep 5
           done
           echo "Container failed to become healthy in time."

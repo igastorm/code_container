@@ -2,12 +2,6 @@
 set -euo pipefail
 
 # ==========================================
-if [ -z "$USER_NAME" ]; then
-    echo "ERROR: USER_NAME environment variable is not set. Container stopped."
-    exit 1
-fi
-
-# ==========================================
 USER_NAME="${USER_NAME:-devenv}"
 
 DETECTED_UID=$(stat -c '%u' /home)
