@@ -41,7 +41,7 @@ jobs:
             --read-only \
             --tmpfs /tmp:exec \
             -e USER_NAME=testuser \
-            -e SUPERVISOR_LOG=on \
+            -e LOG=on \
             -v $(pwd)/workspace:/home \
             -p 3000:3000 \
             test-image:latest
