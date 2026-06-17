@@ -65,16 +65,14 @@ if [ -z "$LOG" ]; then
     exit 1
 fi
 
-CODE_SERVER=\
-    sudo -u "$USER_NAME" /usr/local/code-server/bin/code-server \
+FLAG="> /dev/null 2>&1"
+if [ "$LOG" = "on" ] || [ "$LOG" = "ON" ]; then
+  FLAG=""
+fi
+
+exec sudo -u "$USER_NAME" /usr/local/code-server/bin/code-server \
     --bind-addr 0.0.0.0:3000 \
     --auth none \
     --disable-telemetry \
     --disable-update-check \
-    --disable-workspace-trust
-
-if [ "$LOG" = "on" ] || [ "$LOG" = "ON" ]; then
-  exec $CODE_SERVER
-else
-  exec $CODE_SERVER > /dev/null 2>&1
-fi
+    --disable-workspace-trust $FLAG
