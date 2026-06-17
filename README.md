@@ -37,7 +37,7 @@ docker run -d \
   --name devenv \
   --read-only \
   --tmpfs /tmp:exec \
-  -e LOG=on \ # -e LOG=OFF
+  -e LOG=ON \ # or -e LOG=OFF; If omitted, LOG=ON
   -v $(pwd)/workspace:/home \
   -p 3000:3000 \
   ghcr.io/igastorm/code_container:latest
